@@ -1,0 +1,3 @@
+[webservers]
+master_host=snf-782536.vm.okeanos.grnet.gr
+replica_host=snf-728774.vm.okeanos.grnet.gr
