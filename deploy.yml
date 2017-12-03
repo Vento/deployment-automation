@@ -1,6 +1,10 @@
 - hosts: webservers
   remote_user: user
   become: true
+  gather_facts: no
+
+  vars_files:
+    - "{{ inventory_dir }}/vars.yml"
 
   roles:
     - commons-deploy

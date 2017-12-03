@@ -136,3 +136,6 @@ Desktop.ini
 # Docker
 ######################
 /**/.buildNodeID
+######################
+# Ansible
+*.retry

@@ -2,5 +2,8 @@
   remote_user: user
   become: true
 
+  vars_files:
+    - "{{ inventory_dir }}/vars.yml"
+
   roles:
     - docker

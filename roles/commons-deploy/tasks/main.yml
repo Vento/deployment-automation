@@ -1,0 +1,5 @@
+- name: Pull and run latest docker-compose.
+    docker_service:
+    project_src: files
+    pull: yes
+    state: present
