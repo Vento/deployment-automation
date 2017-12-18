@@ -1,5 +1,18 @@
-- name: Pull and run latest docker-compose.
-    docker_service:
-    project_src: files
-    pull: yes
-    state: present
+- name: Ensures deploy dir exists
+  file:
+    path: "/var/tmp/deploy"
+    state: directory
+
+- name: Upload docker-compose files
+  copy: src={{ item.src }} dest={{ item.dest }}
+  mode: u=rw,g=r,o=r
+  with_items:
+    - { src: '{{ role_path }}/files/docker-compose.yml', dest: '/var/tmp/deploy/docker-compose.yml' }
+
+- name: Pull the latest docker-compose and stop containers
+  shell: "cd /var/tmp/deploy; docker-compose pull && docker-compose down"
+
+- name: Run latest docker-compose
+  shell: "cd /var/tmp/deploy; docker-compose up"
+  async: 1000
+  poll: 0

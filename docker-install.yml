@@ -1,9 +1,9 @@
 - hosts: webservers
-  remote_user: user
   become: true
 
   vars_files:
     - "{{ inventory_dir }}/vars.yml"
+    - "{{ inventory_dir }}/vault_encrypted"
 
   roles:
     - docker
